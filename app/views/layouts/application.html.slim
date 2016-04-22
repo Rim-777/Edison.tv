@@ -19,32 +19,32 @@ html lang="en"
 
 
   body
-    .navbar.navbar-default.navbar-static-top
+    .navbar.navbar-default.navbar-fixed-top
       .container
-        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand href="#"Media
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          ul.nav.navbar-nav
-            li= link_to "Link 1", "/path1"
-            li= link_to "Link 2", "/path2"
-            li= link_to "Link 3", "/path3"
-
+        .row
+          .col-lg-3.col-md-3.col-sm-3.col-xs-3
+            = link_to 'Media', root_path, class: 'navbar-brand'
+          - unless controller_name == 'sessions' || controller_name == 'registrations' || controller_name == 'passwords'
+            ul.nav.navbar-nav
+              - if user_signed_in?
+                li.dropdown.nav.nav-tabs
+                  - if current_user.avatar?
+                    = image_tag current_user.avatar.url, 'data-toggle' => "dropdown", class: "dropdown-toggle  thumb ", id: 'user_menu_link'
+                  - else
+                    = link_to current_user.email, '', 'data-toggle' => "dropdown", class: "dropdown-toggle", id: 'user_menu_link'
+                  ul class="dropdown-menu table-bordered" role="menu" aria-labelledby="dLabel"
+                    li = link_to 'profile', current_user
+                    li = link_to 'Log out', destroy_user_session_path, method: :delete
+              - else
+                li= link_to "log in", "#sign_in", "data-toggle" => "modal", class: 'btn btn-small', id: 'sign_in_user'
     .container
-      .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
-          .well.sidebar-nav
-            h3 Sidebar
-            ul.nav.nav-list
-              li.nav-header Sidebar
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+      br
+      br
+      br
+      br
+
+        = bootstrap_flash
+        = yield
 
       footer
-        p &copy; Company 2016
+        p &copy; Timo Moss 2016
