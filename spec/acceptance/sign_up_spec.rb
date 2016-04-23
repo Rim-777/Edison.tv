@@ -15,12 +15,11 @@ feature 'Sign_up', %q{ create my profile I wont to be able to sign up} do
 
   end
 
-  # given(:user) { create(:user) }
-  # scenario 'Registered user is trying to sign up' do
-  #   sign_in(user)
-  #
-  #   visit new_user_registration_path
-  #   expect(page).to have_content 'You are already signed in.'
-  # end
+  given!(:user) { create(:user) }
+  scenario 'Registered user is trying to sign up' do
+    sign_in(user)
+    visit new_user_registration_path
+    expect(page).to have_content 'You are already signed in.'
+  end
 
 end
