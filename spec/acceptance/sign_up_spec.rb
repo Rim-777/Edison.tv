@@ -11,8 +11,7 @@ feature 'Sign_up', %q{ create my profile I wont to be able to sign up} do
     fill_in 'sign_up_password_confitmation_field', with: '12345678'
 
     click_on 'Sign up'
-    expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.'
-
+    expect(page).to have_content 'A message with a confirmation link has been sent to your email address.'
   end
 
   given!(:user) { create(:user) }

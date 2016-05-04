@@ -28,15 +28,9 @@ html lang="en"
             ul.nav.navbar-nav
               - if user_signed_in?
                 li.dropdown.nav.nav-tabs
-                  /- if current_user.avatar?
-                  /  = image_tag current_user.avatar.url, 'data-toggle' => "dropdown", class: "dropdown-toggle  thumb ", id: 'user_menu_link'
-                  /- else
-                  = link_to current_user.email, '', 'data-toggle' => "dropdown", class: "dropdown-toggle", id: 'user_menu_link'
-
-                ul class="dropdown-menu table-bordered" role="menu" aria-labelledby="dLabel"
-                  li = link_to 'Log out', destroy_user_session_path, method: :delete
+                  = link_to current_user.email, destroy_user_session_path, method: :delete, id: 'user_menu_link'
               - else
-                li= link_to "log in", "#sign_in", "data-toggle" => "modal", class: 'btn btn-small', id: 'sign_in_user'
+                li= link_to "log in", new_user_session_path, class: 'btn btn-small', id: 'sign_in_user'
     .container
       br
       br

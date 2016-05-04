@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
+class News < ActiveRecord::Base
   validates :user_id, presence: true
   belongs_to :user
 end

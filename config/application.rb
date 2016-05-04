@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Media
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    # config.action_view.embed_authenticity_token_in_remote_forms = true#todo
+    config.app_generators.scaffold_controller :responders_controller
+
     config.active_record.raise_in_transactional_callbacks = true
     config.generators do |g|
       g.test_framework :rspec,

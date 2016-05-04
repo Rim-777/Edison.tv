@@ -1,0 +1,19 @@
+var userId = '<%= @user.id %>';
+<% if @user.errors.present? %>
+
+<% @user.errors.full_messages.each do |message| %>
+$('#user_' + userId + '_errors').html('<%= j message %>');
+<% end %>
+
+<% else %>
+$('.test_modal').html("<%= j render 'crop_avatar', user: @user %>");
+$('#crop_avatar').Jcrop({
+            onSelect: writeCoordinates,
+            boxWidth: 300,
+            aspectRatio: 1,
+            minSize: [400, 400],
+            setSelect: [0, 0, 700, 700]
+        }
+);
+
+<% end %>
