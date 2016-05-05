@@ -21,6 +21,7 @@ gem 'rmagick', '~> 2.15', '>= 2.15.4'
 gem 'magnific-popup-rails'
 gem "jquery-fileupload-rails"
 gem 'remotipart', '~> 1.2'
+gem 'skim'
 
 
 group :development, :test do

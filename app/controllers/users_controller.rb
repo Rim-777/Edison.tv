@@ -1,25 +1,22 @@
 class UsersController < ApplicationController
-
+  before_action :set_user
   respond_to :js, only: :update
 
   def show
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(user_params)
-    if params[:user][:avatar]
+    if params[:user][:avatar].present?
       respond_with (@user)
     else
-      respond_with (@user) do | format |
+      respond_with (@user) do |format|
         format.html { redirect_to user_path(@user) }
       end
     end
   end
 
   def crop_avatar
-    @user = User.find(params[:id])
     if request.patch?
       @user.crop_avatar!(params[:user][:avatar_crop])
       respond_with (@user) do |format|
@@ -31,5 +28,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:avatar)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

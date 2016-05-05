@@ -1,21 +1,29 @@
 .container-fluid
+
   .row
     .col-lg-2
       .avatar
-        = image_tag (@user.avatar.normal.url), class: "test-popup-link" if @user.avatar
-        = link_to 'upload new image', "#test-modal", class:"popup-modal btn btn-info"
+        = image_tag (@user.avatar.url(:normal)), class: "test-popup-link" if @user.avatar
+      = link_to 'upload new image', "#test-modal", class:"popup-modal btn btn-info"
 
 
     .col-lg-8.col-lg-offset-2
       .popup-gallery
-        a href="#{@user.avatar.normal.url}" title="The Cleaner"
-          img src="#{@user.avatar.thumb.url}" data-pin-nopin="true"
-        a href="#{@user.avatar.normal.url}" title="The Cleaner"
-          img src="#{@user.avatar.thumb.url}" data-pin-nopin="true"
+        /a href="#{@user.avatar.normal.url}" title="The Cleaner"
+        /  img src="#{@user.avatar.thumb.url}" data-pin-nopin="true"
+        /a href="#{@user.avatar.normal.url}" title="The Cleaner"
+        /  img src="#{@user.avatar.thumb.url}" data-pin-nopin="true"
 
 
     div id="test-modal" class="white-popup-block mfp-hide  border-form-div"
-      = form_for @user, remote: true,  :html => {:multipart => true} do |f|
+      .row
+        .col-lg-3.col-lg-offset-3
+          .avatar_preview
+
+
+
+
+      = form_for @user, remote: true, :html => {:multipart => true} do |f|
         = f.file_field :avatar, id: 'fileupload', class: 'form-control btn btn-info'
         br
         = f.submit 'Upload', class: 'btn btn-info upload_avatar_button'
@@ -23,5 +31,6 @@
         = link_to 'Cancel', '', class:"popup-modal-dismiss btn btn-danger"
 
       .test_modal
+
 
 

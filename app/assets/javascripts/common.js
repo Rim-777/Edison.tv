@@ -1,11 +1,3 @@
-//jQuery(function($) {
-//    $('.test-popup-link').magnificPopup({
-//        type: 'ajax'
-//    });
-//});
-
-
-
 
 $(document).ready(function() {
     $('.popup-gallery').magnificPopup({

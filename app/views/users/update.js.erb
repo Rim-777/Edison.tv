@@ -7,13 +7,9 @@ $('#user_' + userId + '_errors').html('<%= j message %>');
 
 <% else %>
 $('.test_modal').html("<%= j render 'crop_avatar', user: @user %>");
-$('#crop_avatar').Jcrop({
-            onSelect: writeCoordinates,
-            boxWidth: 300,
-            aspectRatio: 1,
-            minSize: [400, 400],
-            setSelect: [0, 0, 700, 700]
-        }
-);
-
+crop_avatar();
+$('.avatar_preview').html("<%= j  image_tag @user.avatar_url, id: 'avatar_preview'%>");
+$('#fileupload').toggle();
+$('.popup-modal-dismiss').toggle();
+$('.upload_avatar_button').toggle();
 <% end %>
