@@ -6,7 +6,7 @@ $('#user_' + userId + '_errors').html('<%= j message %>');
 <% end %>
 
 <% else %>
-$('.test_modal').html("<%= j render 'crop_avatar', user: @user %>");
+$('.load_avater_modal').html("<%= j render 'crop_avatar', user: @user %>");
 crop_avatar();
 $('.avatar_preview').html("<%= j  image_tag @user.avatar_url, id: 'avatar_preview'%>");
 $('#fileupload').toggle();

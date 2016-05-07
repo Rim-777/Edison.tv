@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+  attr_reader :avatar_crop
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and,:omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  attr_reader :avatar_crop
+
   has_one :profile
+  has_many :albums, dependent: :destroy
+  has_many :pictures, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

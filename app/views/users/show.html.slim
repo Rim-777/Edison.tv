@@ -4,24 +4,33 @@
     .col-lg-2
       .avatar
         = image_tag (@user.avatar.url(:normal)), class: "test-popup-link" if @user.avatar
-      = link_to 'upload new image', "#test-modal", class:"popup-modal btn btn-info"
-
+      = link_to 'Upload new avatar', "#load-avatar-modal", class:"popup-modal btn btn-info"
+      = link_to 'Create new album', "#create-album-modal", class:"popup-modal btn btn-info"
 
     .col-lg-8.col-lg-offset-2
-      .popup-gallery
-        /a href="#{@user.avatar.normal.url}" title="The Cleaner"
-        /  img src="#{@user.avatar.thumb.url}" data-pin-nopin="true"
-        /a href="#{@user.avatar.normal.url}" title="The Cleaner"
-        /  img src="#{@user.avatar.thumb.url}" data-pin-nopin="true"
+      h3
+        |Albums:
+      br
+      - @user.albums.each do |album|
+        .row
+          .album_title
+            = link_to album.title, album_path(album)
+          .album
+            - album.pictures.each_with_index do |picture, index|
+              .pucture_box id="pucture_box_#{picture.id}" style="display:#{index >= 30 ? "none" : "inline"}"
+                .popup-gallery
+                  a href="#{picture.image_url(:normal).to_s}" title="#{picture.title}"
+                    .image_box
+                      img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
+                .image_crud_links
+                  = link_to 'x', picture_path(picture), remote: true, method: :delete, class: 'close remove_image'
+                hr
 
 
-    div id="test-modal" class="white-popup-block mfp-hide  border-form-div"
+    div id="load-avatar-modal" class="white-popup-block mfp-hide  border-form-div"
       .row
         .col-lg-3.col-lg-offset-3
           .avatar_preview
-
-
-
 
       = form_for @user, remote: true, :html => {:multipart => true} do |f|
         = f.file_field :avatar, id: 'fileupload', class: 'form-control btn btn-info'
@@ -30,7 +39,23 @@
 
         = link_to 'Cancel', '', class:"popup-modal-dismiss btn btn-danger"
 
-      .test_modal
+      .load_avater_modal
+
+    div id="create-album-modal" class="white-popup-block mfp-hide  border-form-div"
+      .row
+
+        = form_for [@user, Album.new]  do |f|
+          .field
+            = f.text_field :title, class: 'form-control'
+          br
+
+          = f.submit 'Create', class: 'btn btn-info upload_avatar_button'
+
+          = link_to 'Cancel', '', class: "popup-modal-dismiss btn btn-danger"
+
+
+
+
 
 
 

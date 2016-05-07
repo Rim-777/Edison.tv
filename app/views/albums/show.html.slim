@@ -1,0 +1,26 @@
+.container-fluid
+  h2
+    = @album.title
+  .row
+    .col-lg-4
+      a class='upload_images'
+        |add files +
+      = form_for [@album, Picture.new], remote: true, html: {multipart: true} do |f|
+        = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info', id: 'new_picture'
+  br
+  br
+  br
+  .album
+    - @album.pictures.each do |picture|
+      .pucture_box id="pucture_box_#{picture.id}"
+        .popup-gallery
+          a href="#{picture.image_url(:normal).to_s}" title="#{picture.title}"
+            .image_box
+              img src="#{picture.image_url(:thumb).to_s}" data-pin-nopin="true"
+        .image_crud_links
+          = link_to 'x', picture_path(picture), remote: true, method: :delete, class: 'close remove_image'
+        hr
+
+
+
+

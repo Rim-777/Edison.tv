@@ -1,5 +1,9 @@
+$(document).ready(function () {
+    setPopupGallery()
+});
 
-$(document).ready(function() {
+function setPopupGallery() {
+
     $('.popup-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -8,8 +12,8 @@ $(document).ready(function() {
         mainClass: 'mfp-with-zoom mfp-img-mobile',
         image: {
             verticalFit: true,
-            titleSrc: function(item) {
-                return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.el.attr('data-source')+'" target="_blank">image source</a>';
+            titleSrc: function (item) {
+                return item.el.attr('title');
             }
         },
         gallery: {
@@ -18,10 +22,11 @@ $(document).ready(function() {
         zoom: {
             enabled: true,
             duration: 300, // don't foget to change the duration also in CSS
-            opener: function(element) {
+            opener: function (element) {
                 return element.find('img');
             }
         }
     });
-});
 
+
+}

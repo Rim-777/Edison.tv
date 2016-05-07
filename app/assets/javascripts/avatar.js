@@ -1,7 +1,7 @@
 $(function () {
     $('.popup-modal').magnificPopup({
         type: 'inline',
-        preloader: false,
+        preloader: true,
         focus: '#username',
         modal: true
     });

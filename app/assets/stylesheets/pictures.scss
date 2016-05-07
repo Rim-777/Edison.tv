@@ -1,0 +1,23 @@
+// Place all the styles related to the Pictures controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_picture{
+  opacity: 0.0;
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(2);
+
+}
+.upload_images{
+  position: absolute;
+  z-index: 1;
+}
+
+.remove_image {
+  margin-right: 3%;
+}

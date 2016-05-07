@@ -1,0 +1,14 @@
+var pictureId = '<%= @picture.id %>';
+var picture = $('#pucture_box_'+ pictureId);
+
+<% if @picture.errors.present? %>
+
+<% @picture.errors.full_messages.each do |message| %>
+$('#picture_' + pictureId + '_errors').html('<%= j message %>');
+<% end %>
+
+<% else %>
+picture.hide();
+picture.remove();
+
+<% end %>

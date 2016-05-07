@@ -16,7 +16,5 @@
 //= require jquery.Jcrop.min.js
 //= require jquery.magnific-popup.min.js
 //= require jquery-fileupload/basic
-//= require jquery-fileupload/basic-plus
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
