@@ -37,7 +37,7 @@ html lang="en"
                         .user_name_in_menu
                           = current_user.first_name
                       .col-lg-3.col-md-3.col-sm-3.col-xs-3
-                        = image_tag current_user.avatar.mini, class: "img-circle "
+                        = image_tag current_user.avatar.mini, class: "img-circle"
                   - else
                 - else
                   li= link_to "log in", new_user_session_path, class: 'btn', id: 'sign_in_user'
