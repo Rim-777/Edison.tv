@@ -1,0 +1,8 @@
+.empty_album id="empty_album_#{album.id}"
+  button.btn.close.upload_images.empty_album
+
+    | Album is empty.
+    br
+    | Click or droop images to upload.
+    = form_for [album, Picture.new], remote: true, html: {multipart: true} do |f|
+      = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info invis', id: 'new_picture'

@@ -17,20 +17,25 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg png)
   end
 
-  # version :large do
-  #   process :resize_to_fill => [500, 500]
-  # end
+  version :large do
+    process :resize_to_limit => [500, 500]
+  end
 
   # version :normal, from_version: :large do
-  version :normal do
+  version :normal, from_version: :large do
     process :crop!
     process :resize_to_fill => [300, 300]
   end
 
   # version :thumb, from_version: :normal do
-  version :thumb do
+  version :thumb, from_version: :normal do
     process :crop!
     process :resize_to_fill => [100, 100]
+  end
+
+  version :mini, from_version: :normal do
+    process :crop!
+    process :resize_to_fill => [50, 50]
   end
 
   def crop!

@@ -1,6 +1,8 @@
 <%  if @picture.new_record? %>
-alert("Failed to upload picture: <%= j @painting.errors.full_message.join(',')%>
+$('.notifications').html('<%= j render 'common/errors', resource: @picture %>');
 <%else%>
-$('.album').append("<%= j render @picture %>");
+var albumId = '<%= @picture.album_id %>';
+$('#empty_album_'+ albumId).remove();
+$('#album_' + albumId).append("<%= j render @picture %>");
 setPopupGallery();
 <%end %>

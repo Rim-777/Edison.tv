@@ -1,0 +1,21 @@
+tr.news_title id="news_#{news.id}"
+  td.col-lg-1
+    .row
+      .col-lg-1
+        = image_tag news.user.avatar_url(:mini), class: 'img-circle'
+      .col-lg-2.col-lg-push-5
+        = news.user.first_name
+  td.col-lg-3
+    .col-lg-offset-5
+      |shared link on
+  td.col-lg-6
+    .col-lg-5.col-lg-push-0
+      = link_to "#{news.commentary}", album_path(news.newsable)
+    .col-lg-7.col-lg-pull-0
+      - news.newsable.pictures.each_with_index  do |picture, index|
+        - break if index  > 13
+        = image_tag picture.image.micro
+  td.col-lg-3
+    .col-lg-pull-2
+      .row.date
+        = news.created_at.to_time.to_formatted_s(:long)

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require private_pub
 //= require jquery.Jcrop.min.js
 //= require jquery.magnific-popup.min.js
 //= require jquery-fileupload/basic

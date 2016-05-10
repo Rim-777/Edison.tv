@@ -22,6 +22,8 @@ gem 'magnific-popup-rails'
 gem "jquery-fileupload-rails"
 gem 'remotipart', '~> 1.2'
 gem 'skim'
+gem 'private_pub'
+gem 'thin'
 
 
 group :development, :test do

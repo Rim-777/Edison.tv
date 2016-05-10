@@ -1,14 +1,11 @@
-var userId = '<%= @user.id %>';
 <% if @user.errors.present? %>
 
-<% @user.errors.full_messages.each do |message| %>
-$('#user_' + userId + '_errors').html('<%= j message %>');
-<% end %>
+$('.notifications').html('<%= j render 'common/errors', resource: @user %>');
 
 <% else %>
 $('.load_avater_modal').html("<%= j render 'crop_avatar', user: @user %>");
 crop_avatar();
-$('.avatar_preview').html("<%= j  image_tag @user.avatar_url, id: 'avatar_preview'%>");
+$('.avatar_preview').html("<%= j  image_tag @user.avatar_url(:large), id: 'avatar_preview'%>");
 $('#fileupload').toggle();
 $('.popup-modal-dismiss').toggle();
 $('.upload_avatar_button').toggle();

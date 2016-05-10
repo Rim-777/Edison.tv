@@ -1,22 +1,28 @@
 .container-fluid
-  h2
-    = @album.title
   .row
-    .col-lg-4
-      a class='upload_images'
-        |add files +
+    .col-lg-1.col-md-1.col-sm-1.col-xs-1
+      button class='upload_images btn btn-warning'
+        |Add Pictures
       = form_for [@album, Picture.new], remote: true, html: {multipart: true} do |f|
-        = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info', id: 'new_picture'
+        = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info invis', id: 'new_picture'
+    .col-lg-1.col-md-1.col-sm-1.col-xs-1.col-lg-offset-1.col-md-offset-1.col-sm-offset-1.col-xs-offset-1
+      = button_to 'My Page', user_path(current_user), method: :get, class: 'btn btn-warning'
+    .col-lg-1.col-md-1.col-sm-1.col-xs-1
+      = button_to 'News', news_path,  method: :get,class: 'btn btn-warning'
+  h2.title
+    | Album Title:
+    spam>
+    = @album.title
+
+
   br
-  br
-  br
-  .album
+  .album id="album_#{@album.id}"
     - @album.pictures.each do |picture|
       .pucture_box id="pucture_box_#{picture.id}"
         .popup-gallery
-          a href="#{picture.image_url(:normal).to_s}" title="#{picture.title}"
+          a href="#{picture.image_url(:normal).to_s}"
             .image_box
-              img src="#{picture.image_url(:thumb).to_s}" data-pin-nopin="true"
+              img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
         .image_crud_links
           = link_to 'x', picture_path(picture), remote: true, method: :delete, class: 'close remove_image'
         hr

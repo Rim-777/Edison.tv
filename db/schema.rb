@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506184648) do
+ActiveRecord::Schema.define(version: 20160508195452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,35 +30,27 @@ ActiveRecord::Schema.define(version: 20160506184648) do
   create_table "news", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "commentary"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "newsable_id"
+    t.string   "newsable_type"
   end
 
+  add_index "news", ["newsable_id", "newsable_type"], name: "index_news_on_newsable_id_and_newsable_type", using: :btree
+  add_index "news", ["newsable_id"], name: "index_news_on_newsable_id", using: :btree
   add_index "news", ["user_id"], name: "index_news_on_user_id", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "album_id"
-    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "image"
   end
 
-  add_index "pictures", ["album_id", "title"], name: "index_pictures_on_album_id_and_title", using: :btree
   add_index "pictures", ["album_id"], name: "index_pictures_on_album_id", using: :btree
-  add_index "pictures", ["title"], name: "index_pictures_on_title", using: :btree
   add_index "pictures", ["user_id", "album_id"], name: "index_pictures_on_user_id_and_album_id", using: :btree
-  add_index "pictures", ["user_id", "title"], name: "index_pictures_on_user_id_and_title", using: :btree
   add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
-
-  create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -71,15 +63,10 @@ ActiveRecord::Schema.define(version: 20160506184648) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "profile_id"
     t.string   "avatar"
   end
 
@@ -90,5 +77,4 @@ ActiveRecord::Schema.define(version: 20160506184648) do
   add_foreign_key "news", "users"
   add_foreign_key "pictures", "albums"
   add_foreign_key "pictures", "users"
-  add_foreign_key "profiles", "users"
 end

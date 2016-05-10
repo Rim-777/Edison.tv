@@ -1,8 +1,8 @@
 .pucture_box id="pucture_box_#{picture.id}"
   .popup-gallery
-    a href="#{picture.image_url(:normal).to_s}" title="#{picture.title}"
+    a href="#{picture.image_url(:normal).to_s}"
       .image_box
-        img src="#{picture.image_url(:thumb).to_s}" data-pin-nopin="true"
+        img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
   .image_crud_links
     = link_to 'x', picture_path(picture), remote: true, method: :delete, class: 'close remove_image'
   hr

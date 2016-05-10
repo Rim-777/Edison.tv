@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $('#new_picture').fileupload
-    dataType: 'script'
+  setFileUploader()
+

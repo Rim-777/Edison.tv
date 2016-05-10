@@ -2,13 +2,14 @@ var pictureId = '<%= @picture.id %>';
 var picture = $('#pucture_box_'+ pictureId);
 
 <% if @picture.errors.present? %>
-
-<% @picture.errors.full_messages.each do |message| %>
-$('#picture_' + pictureId + '_errors').html('<%= j message %>');
-<% end %>
-
+    $('.notifications').html('<%= j render 'common/errors', resource: @picture %>');
 <% else %>
-picture.hide();
-picture.remove();
+    picture.hide();
+    picture.remove();
 
+    <% if @picture.album.is_empty? %>
+        $('#album_' + '<%= @picture.album_id %>').html('<%= j render 'albums/empty_album', album:@picture.album  %>');
+        setFileUploader();
+        <% end %>
 <% end %>
+

@@ -24,13 +24,29 @@ html lang="en"
         .row
           .col-lg-3.col-md-3.col-sm-3.col-xs-3
             = link_to 'Media', root_path, class: 'navbar-brand'
-          - unless controller_name == 'sessions' || controller_name == 'registrations' || controller_name == 'passwords'
-            ul.nav.navbar-nav
-              - if user_signed_in?
-                li.dropdown.nav.nav-tabs
-                  = link_to current_user.email, destroy_user_session_path, method: :delete, id: 'user_menu_link'
-              - else
-                li= link_to "log in", new_user_session_path, class: 'btn btn-small', id: 'sign_in_user'
+          .col-lg-3.col-md-3.col-sm-3.col-xs-3
+            .errors
+          .col-lg-1.col-md-1.col-sm-1.col-xs-1.col-lg-offset-7.col-md-offset-7.col-sm-offset-7.col-xs-offset-7
+            - unless controller_name == 'sessions' || controller_name == 'registrations' || controller_name == 'passwords'
+              ul.nav.navbar-nav
+                - if user_signed_in?
+                  li.dropdown.nav.nav-tabs
+                  - if current_user.avatar
+                    .row data-toggle = "dropdown" class= "dropdown-toggle"
+                      .col-lg-3.col-md-3.col-sm-3.col-xs-3 class= 'close'
+                        .user_name_in_menu
+                          = current_user.first_name
+                      .col-lg-3.col-md-3.col-sm-3.col-xs-3
+                        = image_tag current_user.avatar.mini, class: "img-circle "
+                  - else
+                - else
+                  li= link_to "log in", new_user_session_path, class: 'btn', id: 'sign_in_user'
+                ul class="dropdown-menu table-bordered" role="menu" aria-labelledby="dLabel"
+                  li
+                    = link_to 'Profile', current_user, class: 'btn btn-sascess'
+                  li
+                    = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+
     .container
       br
       br
