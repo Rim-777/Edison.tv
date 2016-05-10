@@ -1,0 +1,2 @@
+= form_for [album, Picture.new], remote: true, html: {multipart: true} do |f|
+  = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info invis new_picture new_pictures', id: 'new_picture'

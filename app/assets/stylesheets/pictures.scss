@@ -10,7 +10,20 @@
   top: 0;
   width: 100%;
   height: 100%;
-  transform: scale(1.3);
+  transform: scale(1);
+
+}
+
+
+.invis_in_album{
+  opacity: 0.0;
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.7);
 
 }
 .upload_images{
@@ -24,4 +37,8 @@
 
 .new_pictures{
   margin-left: -40px;
+}
+
+.new_picture{
+  //margin-left: 40px;
 }
