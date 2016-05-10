@@ -34,8 +34,6 @@ function setPopupGallery() {
 function setFileUploader(){
     $('#new_picture').fileupload({ dataType:'script'});
 
-
-
     $('.new_picture').fileupload({dataType: 'script'});
 
 }

@@ -18,11 +18,6 @@
   overflow: hidden;
 }
 
-.not_empty_album{
-  min-width: 100%;
-  height: auto;
-  border: dashed 1px #e0e2e4;
-}
 
 .album_title{
   margin-left: -2%;
@@ -33,5 +28,9 @@ a{
 }
 .title, .avatar_link{
   color: #8c8c8c;
+}
+
+.album_titles{
+  border: dashed 1px rgba(232, 232, 232, 0.69);
 }
 

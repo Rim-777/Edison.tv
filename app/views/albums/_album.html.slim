@@ -1,27 +1,30 @@
-.row.album_title id='album_#{album.id}_title'
+.row.album_title.album_titles id='album_#{album.id}_title'
 
-  .col-lg-4.col-md-3.col-sm-3.col-xs-3.btn.title
+  .col-lg-4.col-md-3.col-sm-3.col-xs-3.title
     .col-lg-2
-      |Title:
-    .col-lg-10
+      | Title:
+    .col-lg-10.col-lg-push-1
       = link_to album.title, album_path(album), class: 'btn-link'
-  .col-lg-2.col-md-2.col-sm-2.col-xs-2.btn.title
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2.title
     .col-lg-5
-      |Share:
-    .col-lg-3
-      = button_to album_news_index_path(album), remote: true, method: :post, class: 'btn-link'
-        span.glyphicon.glyphicon-plane
-  .col-lg-3.col-md-3.col-sm-3.col-xs-3.btn.title
+      | Share:
+    .col-lg-3.col-lg-push-1
+      = link_to album_news_index_path(album), remote: true, method: :post, class: 'btn-link'
+        i.glyphicon.glyphicon-plane
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3.title
     .col-lg-4
-      |Remove:
+      | Remove:
+
+    .col-lg-3.col-lg-push-1
+
+      = link_to album_path(album), remote: true, method: :delete, class: 'btn-link'
+        i.glyphicon.glyphicon-trash
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3.title
     .col-lg-3
-      = button_to album_path(album), remote: true, method: :delete, class: 'btn-link'
-        span.glyphicon.glyphicon-trash
-  .col-lg-3.col-md-3.col-sm-3.col-xs-3.btn.title
-    .col-lg-3
-      |Upload:
-    .col-lg-3
+      | Upload:
+    .col-lg-3.col-lg-push-1
       == render 'albums/no_empty_uploader', album: album
+
 
 .row
   .album id="album_#{album.id}"

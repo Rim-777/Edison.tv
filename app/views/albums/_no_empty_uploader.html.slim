@@ -1,4 +1,4 @@
-= button_to '', class:'upload_images btn-link'
-  span.glyphicon.glyphicon-plus
+= link_to class:'close.upload_images'
+  i.glyphicon.glyphicon-plus
   = form_for [album, Picture.new], remote: true, html: {multipart: true} do |f|
-    = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info invis', id: 'new_picture'
+    = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info invis new_picture ', id: 'new_picture'
