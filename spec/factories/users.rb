@@ -9,7 +9,7 @@ FactoryGirl.define do
     first_name 'SomeUserFirstName'
     last_name 'SomeUserLastName'
     password '12345678'
-    avatar '/some avatar/'
+    avatar  File.open("#{Rails.root}/public/uploads/user/avatar/common/ava.png")
   end
 
 end

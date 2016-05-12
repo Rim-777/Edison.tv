@@ -1,12 +1,11 @@
 <% if @news.errors.present? %>
-$('.errors').html('<%= j render 'common/errors', resource: @news %>');
+    $('.errors').html('<%= j render 'common/errors', resource: @news %>');
 <% else %>
 
-<% publish_to "/news" do %>
-$('#news_list').prepend("<%= j render  @news %>");
-<% end %>
+    <% publish_to "/news" do %>
+        $('#news_list').prepend("<%= j render  @news %>");
+    <% end %>
 
-$('.notifications').html('<%= j render 'common/notifications', resource: @news %>');
-
+    $('.notifications').html('<%= j render 'common/notifications', resource: @news %>');
 
 <% end %>

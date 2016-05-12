@@ -10,7 +10,6 @@ class AlbumsController < ApplicationController
 
 
   def show
-    # render text: params
    respond_with(@album)
   end
 

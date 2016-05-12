@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params)
     respond_with(@user)
-
   end
 
   def crop_avatar
