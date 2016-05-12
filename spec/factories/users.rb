@@ -9,6 +9,7 @@ FactoryGirl.define do
     first_name 'SomeUserFirstName'
     last_name 'SomeUserLastName'
     password '12345678'
+    avatar '/some avatar/'
   end
 
 end

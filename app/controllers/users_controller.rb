@@ -8,13 +8,8 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    if params[:user][:avatar].present?
-      respond_with (@user)
-    else
-      respond_with (@user) do |format|
-        format.html { redirect_to user_path(@user) }
-      end
-    end
+    respond_with(@user)
+
   end
 
   def crop_avatar
