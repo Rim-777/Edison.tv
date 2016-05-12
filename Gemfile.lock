@@ -150,6 +150,8 @@ GEM
     pg (0.18.4)
     private_pub (1.0.3)
       faye
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -288,6 +290,7 @@ DEPENDENCIES
   magnific-popup-rails
   pg (~> 0.15)
   private_pub
+  pundit
   rails (= 4.2.6)
   remotipart (~> 1.2)
   responders (~> 2.0)

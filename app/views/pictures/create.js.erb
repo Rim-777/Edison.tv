@@ -1,7 +1,7 @@
 <%  if @picture.new_record? %>
 $('.notifications').html('<%= j render 'common/errors', resource: @picture %>');
 <%else%>
-var albumId = '<%= @picture.album_id %>';
+var albumId = '<%= @album.id %>';
 $('#empty_album_'+ albumId).remove();
 $('#album_' + albumId).append("<%= j render @picture %>");
 setPopupGallery();

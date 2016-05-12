@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :profile
+  validates :first_name, presence: true
   has_many :albums, dependent: :destroy
   has_many :pictures, dependent: :destroy
+  has_many :news, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

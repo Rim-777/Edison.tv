@@ -15,7 +15,6 @@ gem 'slim-rails'
 gem 'devise'
 gem 'carrierwave'
 gem 'responders', '~> 2.0'
-# gem 'mini_magick'
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
 
 gem 'magnific-popup-rails'
@@ -24,6 +23,8 @@ gem 'remotipart', '~> 1.2'
 gem 'skim'
 gem 'private_pub'
 gem 'thin'
+gem 'pundit'
+
 
 
 group :development, :test do

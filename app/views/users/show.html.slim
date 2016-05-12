@@ -21,12 +21,12 @@
           span>
           = link_to 'My Albums', user_albums_path(@user), class: " btn  btn-warning"
           span>
-          = link_to 'News', root_url, class: " btn  btn-warning"
+          = link_to 'News', news_index_path, class: " btn  btn-warning"
 
       br
       .albums_list
         - @user.albums.each do |album|
-          == render 'albums/album', album: album
+          == render 'albums/album', album: album, user: @user
 
 
     .white-popup-block.mfp-hide.border-form-div id="load-avatar-modal"
@@ -51,7 +51,7 @@
     div id="create-album-modal" class="white-popup-block mfp-hide  border-form-div"
       .row
 
-        = form_for [@user, Album.new], remote: true do |f|
+        = form_for Album.new, remote: true do |f|
           .field
             = f.text_field :title, class: 'form-control', required: "required", placeholder: 'Write Album Title'
           br

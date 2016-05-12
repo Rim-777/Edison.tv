@@ -39,7 +39,7 @@
 
               td.col-lg-7.col-md-7.col-sm-7.col-xs-7
                 .col-lg-5.col-md-5.col-sm-5.col-xs-5.col-lg-pull-1
-                  = link_to "#{album.title}", album_path(album)
+                  = link_to "#{album.title}", user_album_path(@user, album)
                 .col-lg-7.col-md-7.col-sm-7.col-xs-7
                   - album.pictures.each_with_index do |picture, index|
                     - break if index > 13

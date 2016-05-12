@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.invis{
+.invis {
   opacity: 0.0;
   position: absolute;
   z-index: 9999;
@@ -11,6 +11,7 @@
   width: 100%;
   height: 100%;
   transform: scale(1);
+
 
 }
 
@@ -30,15 +31,20 @@
   position: absolute;
   z-index: 0;
 }
+.glyphicon-plus{
+  z-index: -100;
+}
 
 .remove_image {
   margin-right: 3%;
 }
 
 .new_pictures{
-  margin-left: -40px;
+  margin-left: -50px;
+  margin-top: -7px;
 }
 
 .new_picture{
-  //margin-left: 40px;
+  //margin-left: 1px;
 }
+

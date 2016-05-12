@@ -1,22 +1,21 @@
 class NewsController < ApplicationController
-  before_action :set_album, only: :create
+  before_action :authenticate_user!
+  before_action :set_newsable, only: :create
   respond_to :js, only: :create
 
-  def show
-
-  end
-
   def index
-    @news = News.all
+    respond_with(@news = News.all)
   end
 
   def create
-    respond_with(@news = @album.news.create(user_id: current_user.id, commentary: @album.title))
+    authorize News
+    @news = current_user.news.create(newsable_type: @newsable.class , newsable_id: @newsable.id, commentary: @newsable.title)
+    respond_with(@news)
   end
 
   private
-  def set_album
-    @album = Album.find(params[:album_id])
+  def set_newsable
+    @newsable = Album.find(params[:album_id])
   end
 
 end

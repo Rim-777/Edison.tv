@@ -1,27 +1,23 @@
 class PicturesController < ApplicationController
-  before_action :set_album, except: :destroy
-  before_action :set_picture, except: :create
+  before_action :authenticate_user!
+  before_action :set_album
+  before_action :set_picture, only: :destroy
 
   respond_to :js, only: [:create, :destroy]
-  def show
 
-  end
 
   def create
-    @picture = @album.pictures.create(picture_params.merge(user_id: current_user.id))
-    respond_with (@picture) do |format|
-      format.html { redirect_to album_path(@album) }
-    end
+    authorize Picture
+    @picture = current_user.pictures.create(picture_params.merge(album_id: @album.id))
+    respond_with (@picture)
   end
 
-
   def destroy
-    # render text: params
+    authorize @picture
     @picture.remove_image!
     @picture.save
     respond_with (@picture.destroy)
   end
-
 
   private
   def set_album
@@ -29,7 +25,7 @@ class PicturesController < ApplicationController
   end
 
   def set_picture
-    @picture = Picture.find(params[:id])
+    @picture = current_user.pictures.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def picture_params

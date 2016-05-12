@@ -4,5 +4,5 @@
       .image_box
         img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
   .image_crud_links
-    = link_to 'x', picture_path(picture), remote: true, method: :delete, class: 'close remove_image'
+    = link_to 'x', album_picture_path(@album, picture), remote: true, method: :delete, class: 'close remove_image'
   hr
