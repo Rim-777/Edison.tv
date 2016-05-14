@@ -26,7 +26,7 @@
       br
       .albums_list
         - @user.albums.each do |album|
-          == render 'albums/album', album: album, user: @user
+          == render 'albums/album', album: album, user: @user, picture_limit: true
 
 
     .white-popup-block.mfp-hide.border-form-div id="load-avatar-modal"
@@ -61,6 +61,8 @@
           = link_to 'Cancel', '', class: "popup-modal-dismiss btn btn-danger"
 
 
+
+    == render 'common/progress_bar'
 
 
 

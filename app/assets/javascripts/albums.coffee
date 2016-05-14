@@ -6,3 +6,6 @@ $(document).on 'click', '.new_album_button',  (e) ->
   $.magnificPopup.close();
   $(this).parent('form').submit()
 
+
+
+
