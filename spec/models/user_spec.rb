@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
   it { should have_many(:news).dependent(:destroy) }
 
   describe '#crop_avatar!' do
-    let!(:user) { create(:user) }
+    let!(:user) { create(:user, avatar:  File.open("#{Rails.root}/public/uploads/user/avatar/common/ava.png")) }
     let!(:coordinates) { {x: '0', y: '0', width: '300', height: '300'} }
     let!(:new_values) { {x: 0, y: 0, width: 300, height: 300} }
 

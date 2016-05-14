@@ -39,7 +39,8 @@
               a href="#{picture.image_url(:normal).to_s}"
                 .image_box
                   img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
-            .image_crud_links
-              = link_to 'x', album_picture_path(album, picture), remote: true, method: :delete, class: 'close remove_image'
-            hr
+            - if current_user.id == album.user_id
+              .image_crud_links
+                = link_to 'x', album_picture_path(album, picture), remote: true, method: :delete, class: 'close remove_image'
+              hr
 

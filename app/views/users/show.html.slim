@@ -9,7 +9,7 @@
           = image_tag '/uploads/user/avatar/common/normal_ava.png'
 
       .avatar_upload_link.col-lg-offset-8.col-md-offset-9.col-sm-offset-3.col-xs-offset-1
-        = link_to 'Upload', "#load-avatar-modal", class: "popup-modal btn  avatar_link"
+        = link_to 'Upload', "#load-avatar-modal", class: "popup-modal btn avatar_link", id: 'avatar_link'
 
     .col-lg-8.col-md-8.col-sm-8.col-xs-8.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2
       .main_menu
@@ -17,7 +17,7 @@
           = @user.first_name
 
         h3.top_menu
-          = link_to 'Create Album', "#create-album-modal", class: "popup-modal btn btn-warning"
+          = link_to 'Create Album', "#create-album-modal", class: "popup-modal btn btn-warning", id:'album-modal_button'
           span>
           = link_to 'My Albums', user_albums_path(@user), class: " btn  btn-warning"
           span>
@@ -42,7 +42,7 @@
       = form_for @user, remote: true, :html => {:multipart => true} do |f|
         = f.file_field :avatar, id: 'fileupload', class: 'form-control btn btn-info'
         br
-        = f.submit 'Upload', class: 'btn btn-info upload_avatar_button'
+        = f.submit 'Upload', class: 'btn btn-info upload_avatar_button', id: 'upload_avatar_button'
 
         = link_to 'Cancel', '', class: "popup-modal-dismiss btn btn-danger"
 
@@ -53,10 +53,10 @@
 
         = form_for Album.new, remote: true do |f|
           .field
-            = f.text_field :title, class: 'form-control', required: "required", placeholder: 'Write Album Title'
+            = f.text_field :title, class: 'form-control', required: "required", id: 'input_title_field', placeholder: 'Write Album Title'
           br
 
-          = f.submit 'Create', class: 'btn btn-info new_album_button'
+          = f.submit 'Create', class: 'btn btn-info new_album_button', id: 'new_album_button'
 
           = link_to 'Cancel', '', class: "popup-modal-dismiss btn btn-danger"
 

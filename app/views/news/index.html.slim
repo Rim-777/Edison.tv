@@ -1,17 +1,16 @@
 .row
   .col-lg-2.col-md-2.col-sm-2.col-xs-2
     - if user_signed_in?
-      = button_to 'My page', user_path(current_user), class: 'btn btn-warning circle', method: :get if user_signed_in?
+      = button_to 'My page', user_path(current_user), class: 'btn btn-warning circle', id: "my_page_button", method: :get
       br
-      = button_to 'My albums', user_albums_path(current_user), class: 'btn btn-warning circle', method: :get
+      = button_to 'My albums', user_albums_path(current_user), class: 'btn btn-warning circle', id: "my_albums_button", method: :get
 
   .col-lg-8.col-md-8.col-sm-8.col-xs-8
-    .questions_list.found_list data={current_user_id: user_signed_in? ? current_user.id : nil}
-      - if @news.any?
-        table.table.table-hover
-          tbody id="news_list"
-            - @news.each do |news|
-              == render news
+    - if @news.any?
+      table.table.table-hover
+        tbody id="news_list"
+          - @news.each do |news|
+            == render news
 
 
 = subscribe_to '/news'
