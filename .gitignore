@@ -13,5 +13,5 @@
 /tmp
 /public/uploads
 config/database.yml
-config/private_pub.yml
+#config/private_pub.yml
 .idea
