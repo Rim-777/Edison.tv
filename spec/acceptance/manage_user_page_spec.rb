@@ -54,10 +54,9 @@ feature 'Go user page', %q{As authenticate user I want to be able to manage my p
     expect(current_path).to eq user_album_path(user, album)
   end
 
-  scenario 'un-authenticate user is trying to manage some user page' do
-    visit user_path(user)
-    expect(current_path).to eq new_user_session_path
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  describe 'un-authenticate user is trying to manage some user page' do
+    before { visit user_path(user) }
+    it_behaves_like "UnAuthenticate"
   end
 
 

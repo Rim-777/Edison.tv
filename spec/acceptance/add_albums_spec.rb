@@ -3,7 +3,7 @@ require_relative 'acceptance_helper'
 feature 'Add album', %q{As authenticate user I want to be able to add new album } do
   given!(:user) { create(:user) }
 
-  scenario 'authenticate user is trying to add avatar to his user page', js: true do
+  scenario 'authenticate user is trying to add album to his user page', js: true do
     sign_in(user)
     visit user_path(user)
 
