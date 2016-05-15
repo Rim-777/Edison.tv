@@ -2,7 +2,7 @@
   .row
     - if current_user.id == @album.user_id
       .col-lg-1.col-md-1.col-sm-1.col-xs-1
-        button class='upload_images btn btn-warning'
+        button class='upload_images btn btn-warning' id='add_pictures_button'
           |Add Pictures
           = form_for [@album, Picture.new], remote: true, html: {multipart: true} do |f|
             = f.file_field :image, multiple: true, name: 'picture[image]', class: 'form-control btn-info invis_in_album', id: 'new_picture'

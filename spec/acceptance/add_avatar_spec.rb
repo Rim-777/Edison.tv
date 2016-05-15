@@ -28,4 +28,9 @@ feature 'Add Avatar', %q{As authenticate user I want to be able to add avatar to
     expect(page).to_not have_button 'upload_avatar_button'
     expect(page).to_not have_link 'Cancel'
   end
+
+  describe 'un-authenticate user is trying to add avatar on some page' do
+    before {visit user_path(user)}
+    it_behaves_like "UnAuthenticate"
+  end
 end

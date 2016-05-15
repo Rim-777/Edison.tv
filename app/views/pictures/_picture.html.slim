@@ -5,6 +5,7 @@
         img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
   - if current_user.id == @album.user_id
     .image_crud_links
-      = link_to 'x', album_picture_path(@album, picture), remote: true, method: :delete, class: 'close remove_image'
+      = link_to 'x', album_picture_path(@album, picture), remote: true, method: :delete,
+                class: 'close remove_image', id:"remove_picture_#{picture.id}_link"
   hr
 

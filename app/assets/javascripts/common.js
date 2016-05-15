@@ -35,15 +35,12 @@ function setFileUploader() {
 
     $('.new_picture').fileupload({
         dataType: 'script',
-        add: function (e, data) {
-            data.context = $(tmpl("template-upload", data.files[0]));
-            $('#progress-modal').modal('show');
-            $('.progress_modal_body').html(data.context);
-
-            data.submit();
-
-
-        },
+        //add: function (e, data) {
+        //    data.context = $(tmpl("template-upload", data.files[0]));
+        //    $('#progress-modal').modal('show');
+        //    $('.progress_modal_body').html(data.context);
+        //    data.submit();
+        //},
         progress: function (e, data) {
             if (data.context) {
                 progress = parseInt(data.loaded / data.total * 100, 10);

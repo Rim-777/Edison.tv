@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!,  only: [:create, :destroy]
+  before_action :authenticate_user!
   before_action :set_user, only: [:index]
   before_action :set_album, only: :show
   respond_to :js, only: [:create, :destroy]

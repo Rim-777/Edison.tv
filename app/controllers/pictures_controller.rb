@@ -25,7 +25,7 @@ class PicturesController < ApplicationController
   end
 
   def set_picture
-    @picture = current_user.pictures.find_by(id: params[:id], user_id: current_user.id)
+    @picture = @album.pictures.find_by(id: params[:id], user_id: current_user.id)
   end
 
   def picture_params

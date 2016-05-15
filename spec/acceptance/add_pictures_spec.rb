@@ -1,31 +1,48 @@
 require_relative 'acceptance_helper'
 
-
+#todo before run this test-file avoid conflict between capybara and jQuery file upload
+# please comment out in assets/javascript/common.js lines from 38 to 43 including
 feature 'Add pictures', %q{As authenticate user I want to be able to add pictures} do
-  given!(:user) { create(:user) }
+  given(:user) { create(:user) }
 
-  scenario 'authenticate user is trying to manage his from his userpage', js: true do
-    sign_in(user)
-    visit user_path(user)
-    page.find("#album-modal_button").trigger("click")
-    fill_in 'input_title_field', with: 'SomeTitle'
-    click_on 'Create'
-    #
-    expect(page).to have_content 'SomeTitle'
-    expect(page).to have_selector '.album'
+  describe 'in album in user page' do
+    scenario 'authenticate user is trying to add picture to his page', js: true do
+      sign_in(user)
+      visit user_path(user)
 
-    # attach_file 'picture[image]', Rails.root.join("spec/acceptance/test_img/test1.jpg")
-    # attach_file 'new_picture', Rails.root.join("spec/acceptance/test_img/test2.jpg")
-    # sleep(5)
-    # expect(page).to have_link '', href: '/uploads/picture/image/1/normal_test1.jpg'
-    # expect(page).to have_link '', href: '/uploads/picture/image/2/normal_test2.jpg'
+      page.find("#album-modal_button").trigger("click")
+      fill_in 'input_title_field', with: 'SomeTitle'
+      click_on 'Create'
 
+      expect(page).to have_content 'SomeTitle'
+      expect(page).to have_selector '.album'
 
-    expect(page).to_not have_selector '#create-album-modal'
-    expect(page).to_not have_button 'Create'
-    expect(page).to_not have_link 'Cancel'
-    expect(page).to_not have_css 'input[type=text]'
+      successfuly_attached_pictures
+
+      expect(page).to_not have_selector '#create-album-modal'
+      expect(page).to_not have_button 'Create'
+      expect(page).to_not have_link 'Cancel'
+      expect(page).to_not have_css 'input[type=text]'
+    end
   end
 
+
+  describe 'in album in album page' do
+    given(:album) { create(:album, user: user, title: 'May favor album') }
+    before { album }
+    scenario 'authenticate user is trying to add picture to his album page', js: true do
+      sign_in(user)
+      visit user_album_path(user, album)
+
+      page.find("#add_pictures_button").trigger("click")
+      successfuly_attached_pictures
+
+    end
+
+    describe 'un-authenticate user is trying to add picture on some page' do
+      before { visit user_album_path(user, album) }
+      it_behaves_like "UnAuthenticate"
+    end
+  end
 
 end
