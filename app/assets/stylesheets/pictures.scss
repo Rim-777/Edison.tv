@@ -1,7 +1,3 @@
-// Place all the styles related to the Pictures controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .invis {
   opacity: 0.0;
   position: absolute;
@@ -11,8 +7,6 @@
   width: 100%;
   height: 100%;
   transform: scale(1);
-
-
 }
 
 
@@ -25,12 +19,13 @@
   width: 100%;
   height: 100%;
   transform: scale(1.7);
-
 }
+
 .upload_images{
   position: absolute;
   z-index: 0;
 }
+
 .glyphicon-plus{
   z-index: -100;
 }
@@ -42,10 +37,6 @@
 .new_pictures{
   margin-left: -50px;
   margin-top: -7px;
-}
-
-.new_picture{
-  //margin-left: 1px;
 }
 
 #progress-modal{
@@ -66,13 +57,3 @@
   opacity: 0.9;
 }
 
-.progress{
-
-  //background: url(../images/Jcrop.gif) !important;
-  filter: none;
-}
-
-.progress-animated .bar {
-  //background: url(../images/Jcrop.gif) !important;
-
-}

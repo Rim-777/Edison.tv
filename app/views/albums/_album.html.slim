@@ -5,21 +5,21 @@
     .col-lg-10.col-lg-push-1
       = link_to album.title, user_album_path(album.user_id, album), class: 'btn-link'
   .col-lg-2.col-md-2.col-sm-2.col-xs-2.title
-    - if current_user.id == album.user_id
+    - if current_user.owner_of?(album)
       .col-lg-5
         | Share:
       .col-lg-3.col-lg-push-1
         = link_to album_news_index_path(album), remote: true, method: :post, class: 'btn-link'
           i.glyphicon.glyphicon-plane
   .col-lg-3.col-md-3.col-sm-3.col-xs-3.title
-    - if current_user.id == album.user_id
+    - if current_user.owner_of?(album)
       .col-lg-4
         | Remove:
       .col-lg-3.col-lg-push-1
         = link_to album_path(album), remote: true, method: :delete, class: 'btn-link', id: "remove_album_#{album.id}_link"
           i.glyphicon.glyphicon-trash
   .col-lg-3.col-md-3.col-sm-3.col-xs-3.title
-    - if current_user.id == album.user_id
+    - if current_user.owner_of?(album)
       .col-lg-3
         | Upload:
       .col-lg-3.col-lg-push-1.upload_box
@@ -36,7 +36,7 @@
               a href="#{picture.image_url(:normal).to_s}"
                 .image_box
                   img src="#{picture.image_url(:mini).to_s}" data-pin-nopin="true"
-            - if current_user.id == album.user_id
+            - if current_user.owner_of?(album)
               .image_crud_links
                 = link_to 'x', album_picture_path(album, picture), remote: true, method: :delete, class: 'close remove_image'
               hr

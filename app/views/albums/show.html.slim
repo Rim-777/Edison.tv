@@ -1,6 +1,6 @@
 .container-fluid
   .row
-    - if current_user.id == @album.user_id
+    - if current_user.owner_of?(@album)
       .col-lg-1.col-md-1.col-sm-1.col-xs-1
         button class='upload_images btn btn-warning' id='add_pictures_button'
           |Add Pictures
@@ -20,7 +20,6 @@
     - @album.pictures.each do |picture|
       .pucture_box id="pucture_box_#{picture.id}"
         == render 'pictures/picture', picture: picture
-
 
   == render 'common/progress_bar'
 

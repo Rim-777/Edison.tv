@@ -5,7 +5,6 @@ class PicturesController < ApplicationController
 
   respond_to :js, only: [:create, :destroy]
 
-
   def create
     authorize Picture
     @picture = current_user.pictures.create(picture_params.merge(album_id: @album.id))
@@ -25,7 +24,7 @@ class PicturesController < ApplicationController
   end
 
   def set_picture
-    @picture = @album.pictures.find_by(id: params[:id], user_id: current_user.id)
+    @picture = @album.pictures.find(params[:id])
   end
 
   def picture_params

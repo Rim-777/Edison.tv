@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
     @avatar_crop = coordinates
     avatar.recreate_versions!
   end
+
+  def owner_of?(entity)
+    self.id == entity.user_id
+  end
 end

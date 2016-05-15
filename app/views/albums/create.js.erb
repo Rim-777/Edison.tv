@@ -1,10 +1,7 @@
 <% if @album.errors.present? %>
     $('notifications').html('<%= j render 'common/errors', resource: @album %>');
 <% else %>
-
     $('.albums_list').prepend("<%= j render  @album %>");
     $('.notifications').html('<%= j render 'common/notifications', resource: @album %>');
-
     setFileUploader();
-
 <% end %>

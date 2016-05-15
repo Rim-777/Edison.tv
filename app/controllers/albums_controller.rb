@@ -1,13 +1,12 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:index]
+  before_action :set_user, only: :index
   before_action :set_album, only: :show
   respond_to :js, only: [:create, :destroy]
 
   def index
-    respond_with(@albums = @user.albums.all)
+    respond_with(@albums = @user.albums.all.includes(:pictures))
   end
-
 
   def show
    respond_with(@album)
@@ -19,13 +18,11 @@ class AlbumsController < ApplicationController
     respond_with(@album)
   end
 
-
   def destroy
     @album = current_user.albums.find(params[:id])
     authorize @album
     respond_with(@album.destroy)
   end
-
 
   private
   def album_params

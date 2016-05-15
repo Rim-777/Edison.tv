@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   respond_to :js, only: :create
 
   def index
-    respond_with(@news = News.all)
+    respond_with(@news = News.all.includes(:newsable))
   end
 
   def create
@@ -17,5 +17,4 @@ class NewsController < ApplicationController
   def set_newsable
     @newsable = Album.find(params[:album_id])
   end
-
 end

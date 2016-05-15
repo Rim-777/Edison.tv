@@ -1,6 +1,5 @@
 .modal-body
   = form_for(User.new, url: registration_path(:user), html: {id: 'sign_up_user'}) do |f|
-
     .field
       = f.text_field :first_name, autofocus: true, class: 'form-control', required: "required", placeholder: 'Enter your name'
     .field

@@ -1,6 +1,3 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .image-source-link {
   color: #98C3D1;
 }
@@ -19,6 +16,7 @@
 .mfp-with-zoom.mfp-ready .mfp-container {
   opacity: 1;
 }
+
 .mfp-with-zoom.mfp-ready.mfp-bg {
   opacity: 0.8;
 }
@@ -32,7 +30,6 @@
   height: 18px;
   background: green;
 }
-
 
 .border-form-div {
   max-width: 350px;

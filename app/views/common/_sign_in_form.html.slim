@@ -1,6 +1,5 @@
 .modal-body
   = form_for(User.new, url: session_path(:user), html: {id: 'sign_in_user'}) do |f|
-
     .field
       = f.email_field :email, autofocus: true, class: 'form-control', required: "required", placeholder: 'Enter email'
     .field

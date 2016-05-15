@@ -8,5 +8,4 @@ class Album < ActiveRecord::Base
   def is_empty?
     pictures.empty?
   end
-
 end

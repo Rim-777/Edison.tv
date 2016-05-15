@@ -1,14 +1,10 @@
 var albumId = '<%= @album.id %>';
 var album = $('#album_'+ albumId);
-
 <% if @album.errors.present? %>
-
     $('.errors').html('<%= j render 'common/errors', resource: @album %>');
-
 <% else %>
     album.hide();
     album.remove();
     $('#album_'+ albumId  + '_title').remove();
-
 <% end %>
 

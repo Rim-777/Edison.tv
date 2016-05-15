@@ -1,5 +1,5 @@
 .empty_album id="empty_album_#{album.id}"
-  - if current_user.id == album.user_id
+  - if current_user.owner_of?(album)
     button.btn.close.upload_images.empty_album
       | Album is empty.
       br
