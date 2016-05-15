@@ -7,21 +7,21 @@
           = image_tag (@user.avatar.url(:normal)), class: "test-popup-link"
         - else
           = image_tag '/uploads/user/avatar/common/normal_ava.png'
-
-      .avatar_upload_link.col-lg-offset-8.col-md-offset-9.col-sm-offset-3.col-xs-offset-1
-        = link_to 'Upload', "#load-avatar-modal", class: "popup-modal btn avatar_link", id: 'avatar_link'
+      - if current_user == @user
+        .avatar_upload_link.col-lg-offset-8.col-md-offset-9.col-sm-offset-3.col-xs-offset-1
+          = link_to 'Upload', "#load-avatar-modal", class: "popup-modal btn avatar_link", id: 'avatar_link'
 
     .col-lg-8.col-md-8.col-sm-8.col-xs-8.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2
       .main_menu
         h3.top_name.btn-warning
           = @user.first_name
-
-        h3.top_menu
-          = link_to 'Create Album', "#create-album-modal", class: "popup-modal btn btn-warning", id:'album-modal_button'
-          span>
-          = link_to 'My Albums', user_albums_path(@user), class: " btn  btn-warning"
-          span>
-          = link_to 'News', news_index_path, class: " btn  btn-warning"
+          h3.top_menu
+            - if current_user == @user
+              = link_to 'Create Album', "#create-album-modal", class: "popup-modal btn btn-warning", id:'album-modal_button'
+              span>
+            = link_to 'Albums', user_albums_path(@user), class: " btn  btn-warning"
+            span>
+            = link_to 'News', news_index_path, class: " btn  btn-warning"
 
       br
       .albums_list

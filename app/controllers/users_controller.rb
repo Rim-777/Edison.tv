@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize(@user)
     @user.update(user_params)
     respond_with(@user)
   end

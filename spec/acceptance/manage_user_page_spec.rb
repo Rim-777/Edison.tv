@@ -17,7 +17,7 @@ feature 'Go user page', %q{As authenticate user I want to be able to manage my p
     expect(page).to have_link album.title, href: "/users/#{user.id}/albums/#{album.id}"
     expect(page).to have_link 'Create Album'
     expect(page).to have_link 'Create Album'
-    expect(page).to have_link 'My Albums'
+    expect(page).to have_link 'Albums'
     expect(page).to have_link 'News'
     expect(page).to have_link 'avatar_link'
     expect(page).to have_selector '.albums_list'

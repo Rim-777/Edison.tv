@@ -1,7 +1,7 @@
 .empty_album id="empty_album_#{album.id}"
-  button.btn.close.upload_images.empty_album
-
-    | Album is empty.
-    br
-    | Click or droop images to upload.
-    /== render 'albums/upload_form', album: album
+  - if current_user.id == album.user_id
+    button.btn.close.upload_images.empty_album
+      | Album is empty.
+      br
+      | Click or droop images to upload.
+      /== render 'albums/upload_form', album: album
