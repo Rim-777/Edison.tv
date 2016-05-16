@@ -27,6 +27,7 @@ function setPopupGallery() {
             }
         }
     });
+
 }
 
 function setFileUploader() {
@@ -34,14 +35,12 @@ function setFileUploader() {
     var filesuploaded = 0;
     $('.new_picture').bind('fileuploaddone', function (e, data) {
         $('.count').html(++filesuploaded);
-
         if ((files_count/2) == filesuploaded) {
             files_count = 0;
             filesuploaded = 0;
             $('#progress-modal').modal('hide');
         }
     });
-
     $('.new_picture').fileupload({
         dataType: 'script',
         add: function (e, data) {
@@ -62,9 +61,14 @@ function setFileUploader() {
                 progress = parseInt(data.loaded / data.total * 100, 10);
                 console.log(progress);
                 data.context.find('.bar').css('width', progress + '%');
+
             }
+
+
         }
     });
+
 }
+
 
 
