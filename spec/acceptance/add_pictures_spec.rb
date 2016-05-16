@@ -24,7 +24,6 @@ feature 'Add pictures', %q{As authenticate user I want to be able to add picture
     end
   end
 
-
   describe 'in album in album page' do
     given(:album) { create(:album, user: user, title: 'May favor album') }
     before { album }
@@ -34,7 +33,6 @@ feature 'Add pictures', %q{As authenticate user I want to be able to add picture
 
       page.find("#add_pictures_button").trigger("click")
       successfuly_attached_pictures
-
     end
 
     describe 'un-authenticate user is trying to add picture on some page' do
@@ -42,5 +40,4 @@ feature 'Add pictures', %q{As authenticate user I want to be able to add picture
       it_behaves_like "UnAuthenticate"
     end
   end
-
 end

@@ -21,6 +21,5 @@ feature 'Go user page', %q{As authenticate user I want to be able to manage my a
     expect(page).to have_button 'News'
     click_on 'News'
     expect(current_path).to eq root_path
-
   end
 end

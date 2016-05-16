@@ -58,5 +58,4 @@ feature 'Go user page', %q{As authenticate user I want to be able to manage my p
     before { visit user_path(user) }
     it_behaves_like "UnAuthenticate"
   end
-
 end

@@ -36,6 +36,4 @@ module AcceptanceMacros
     expect(page).to have_link '', href: '/uploads/picture/image/1/normal_test1.jpg'
     expect(page).to have_link '', href: '/uploads/picture/image/2/normal_test2.jpg'
   end
-
 end
-

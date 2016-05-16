@@ -8,7 +8,6 @@ feature 'Add Avatar', %q{As authenticate user I want to be able to add avatar to
     sign_in(user)
     visit user_path(user)
 
-
     click_on 'avatar_link'
     attach_file 'fileupload', Rails.root.join("public/common/test_copy.jpg")
     click_on 'upload_avatar_button'

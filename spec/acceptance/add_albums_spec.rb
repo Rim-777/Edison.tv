@@ -28,5 +28,4 @@ feature 'Add album', %q{As authenticate user I want to be able to add new album 
     before {visit user_path(user)}
     it_behaves_like "UnAuthenticate"
   end
-
 end

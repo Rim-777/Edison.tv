@@ -17,5 +17,4 @@ RSpec.describe NewsPolicy do
       expect(subject).to_not permit(nil, news)
     end
   end
-
 end

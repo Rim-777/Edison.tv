@@ -22,7 +22,6 @@ feature 'Add album', %q{As authenticate user I want to be able to add new album 
       expect(page).to_not have_content 'upload'
       expect(page).to_not have_selector "album_#{album.id}"
     end
-
   end
 
   scenario 'other authenticate user is trying to remove his not album', js: true do
@@ -32,11 +31,10 @@ feature 'Add album', %q{As authenticate user I want to be able to add new album 
     within '.albums_list' do
       expect(page).to_not have_link "remove_album_#{album.id}_link"
     end
-
   end
+
   describe 'un-authenticate user is trying to remove album on some page' do
     before {visit user_path(user)}
     it_behaves_like "UnAuthenticate"
   end
-
 end

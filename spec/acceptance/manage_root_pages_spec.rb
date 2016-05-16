@@ -14,7 +14,6 @@ feature 'Manage Root Page', %q{As authenticate user I want to be able to manage 
       click_on 'my_page_button'
       expect(current_path).to eq user_path(user)
 
-
       visit root_url
       expect(page).to have_button 'my_albums_button'
       click_on 'my_albums_button'
@@ -27,7 +26,6 @@ feature 'Manage Root Page', %q{As authenticate user I want to be able to manage 
 
       click_on album.title
       expect(current_path).to eq user_album_path(user, album)
-
     end
   end
 end

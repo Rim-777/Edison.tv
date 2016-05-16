@@ -45,9 +45,7 @@ RSpec.describe UsersController, type: :controller do
         user.reload
         expect(user.avatar_url).to eq "/uploads/user/avatar/#{user.id}/ava.png"
       end
-
     end
-
   end
 
   describe 'PATCH#crop_avatar' do
