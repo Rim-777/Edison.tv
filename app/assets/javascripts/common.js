@@ -3,7 +3,6 @@ $(document).ready(function () {
 });
 
 function setPopupGallery() {
-
     $('.popup-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -27,7 +26,6 @@ function setPopupGallery() {
             }
         }
     });
-
 }
 
 function setFileUploader() {
@@ -41,6 +39,7 @@ function setFileUploader() {
             $('#progress-modal').modal('hide');
         }
     });
+
     $('.new_picture').fileupload({
         dataType: 'script',
         add: function (e, data) {
@@ -49,25 +48,20 @@ function setFileUploader() {
             var file = data.files[0];
             if (types.test(file.type) || types.test(file.name)) {
                 data.context = $(tmpl("template-upload", file));
-                $('.progress_modal_body').html(data.context);
                 $('#progress-modal').modal('show');
                 $('.result').html(files_count/2);
+                $('.progress_modal_body').html(data.context);
                 data.submit();
             }
-
         },
         progress: function (e, data) {
             if (data.context) {
                 progress = parseInt(data.loaded / data.total * 100, 10);
                 console.log(progress);
                 data.context.find('.bar').css('width', progress + '%');
-
-            }
-
-
+                $('.progress_modal_body').html(data.context);}
         }
     });
-
 }
 
 
