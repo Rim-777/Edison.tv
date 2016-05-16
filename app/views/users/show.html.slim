@@ -6,7 +6,7 @@
         - if @user.avatar_url
           = image_tag (@user.avatar.url(:normal)), class: "test-popup-link"
         - else
-          = image_tag '/uploads/user/avatar/common/normal_ava.png'
+          = image_tag '/common/normal_ava.png'
       - if current_user == @user
         .avatar_upload_link.col-lg-offset-8.col-md-offset-9.col-sm-offset-3.col-xs-offset-1
           = link_to 'Upload', "#load-avatar-modal", class: "popup-modal btn avatar_link", id: 'avatar_link'
@@ -36,7 +36,7 @@
             - if @user.avatar_url
               = image_tag (@user.avatar.url(:thumb)), class: "test-popup-link"
             - else
-              = image_tag '/uploads/user/avatar/common/thumb_ava.png', class: "test-popup-link"
+              = image_tag '/common/thumb_ava.png', class: "test-popup-link"
 
 
       = form_for @user, remote: true, :html => {:multipart => true} do |f|
@@ -59,6 +59,7 @@
           = f.submit 'Create', class: 'btn btn-info new_album_button', id: 'new_album_button'
 
           = link_to 'Cancel', '', class: "popup-modal-dismiss btn btn-danger"
+
 
     == render 'common/progress_bar'
 

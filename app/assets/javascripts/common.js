@@ -34,14 +34,14 @@ function setFileUploader() {
     var files_count = 0;
     $('.new_picture').fileupload({
         dataType: 'script',
-        //add: function (e, data) {
-        //    $('#progress-modal').modal('show');
-        //    data.context = $(tmpl("template-upload", data.files[0]));
-        //    $('.progress_modal_body').html(data.context);
-        //    end_count++;
-        //    $('.count').html(end_count);
-        //    data.submit();
-        //},
+        add: function (e, data) {
+            $('#progress-modal').modal('show');
+            data.context = $(tmpl("template-upload", data.files[0]));
+            $('.progress_modal_body').html(data.context);
+            end_count++;
+            $('.count').html(end_count);
+            data.submit();
+        },
         progress: function (e, data) {
             files_count = 0;
             if (data.context) {
