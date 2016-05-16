@@ -39,7 +39,7 @@ function setFileUploader() {
             data.context = $(tmpl("template-upload", data.files[0]));
             $('.progress_modal_body').html(data.context);
             end_count++;
-            $('.count').html(end_count);
+            $('.count').html(files_count);
             data.submit();
         },
         progress: function (e, data) {
