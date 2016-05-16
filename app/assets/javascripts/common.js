@@ -48,7 +48,7 @@ function setFileUploader() {
                 progress = parseInt(data.loaded / data.total * 100, 10);
                 console.log(progress);
                 data.context.find('.bar').css('width', progress + '%');
-                //$('.progress_modal_body').html(data.context);
+                $('.progress_modal_body').html(data.context);
             }
 
         }
