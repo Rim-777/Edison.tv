@@ -41,6 +41,7 @@ function setFileUploader() {
                 data.context = $(tmpl("template-upload", file));
                 $('.progress_modal_body').html(data.context);
                 files_count++;
+                $('#progress-modal').modal('show');
                 $('.count').html(files_count/2);
                 data.submit();
             }
