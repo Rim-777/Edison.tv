@@ -37,7 +37,3 @@ function crop_avatar(){
         }
     );
 }
-
-
-
-
