@@ -9,7 +9,6 @@ RSpec.describe PicturesController, type: :controller do
   describe 'POST #create' do
     let(:request) { post :create, {picture: attributes_for(:picture), user_id: user.id, album_id: album.id, format: :js} }
 
-
     context 'authentiacate user' do
       before { sign_in(user) }
 
@@ -32,7 +31,6 @@ RSpec.describe PicturesController, type: :controller do
         expect { request }.to_not change(Picture, :count)
       end
     end
-
 
   end
 

@@ -6,7 +6,6 @@ RSpec.describe NewsController, type: :controller do
   let!(:album) { create(:album, user_id: user.id) }
   let(:another_user) { create(:user) }
 
-
   describe 'GET #index' do
     before { sign_in(user) }
     let!(:news) { create_list(:news, 2, user: user) }
@@ -20,7 +19,6 @@ RSpec.describe NewsController, type: :controller do
       expect(response).to render_template :index
     end
   end
-
 
   describe 'POST #create' do
 

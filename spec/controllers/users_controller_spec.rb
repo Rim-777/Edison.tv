@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  let!(:new_avatar) { File.open(Rails.root.join("public/uploads/user/avatar/common/test_copy.jpg")) }
-  let!(:user) { create(:user, avatar: File.open(Rails.root.join("public/uploads/user/avatar/common/ava.png"))) }
+  let!(:new_avatar) { File.open(Rails.root.join("public/common/test_copy.jpg")) }
+  let!(:user) { create(:user, avatar: File.open(Rails.root.join("public/common/ava.png"))) }
 
   describe 'GET #show' do
 
@@ -16,7 +16,6 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template :show
     end
   end
-
 
   describe 'PATCH #update' do
     before { sign_in(user) }
@@ -33,7 +32,6 @@ RSpec.describe UsersController, type: :controller do
         user.reload
         expect(user.avatar_url).to eq "/uploads/user/avatar/#{user.id}/test_copy.jpg"
       end
-
 
       it 'render show view' do
         expect(response).to render_template :update
@@ -52,21 +50,16 @@ RSpec.describe UsersController, type: :controller do
 
   end
 
+  describe 'PATCH#crop_avatar' do
+    let(:crop_params) { {user_id: user.id, user: {avatar_crop: {x: "0", y: "0", width: "300", height: "300"}}, "commit" => "Apply", id: user.id} }
+    let(:request) { patch :crop_avatar, crop_params }
+    before do
+      sign_in(user)
+      request
+    end
 
-describe 'PATCH#crop_avatar' do
-  let(:crop_params) {{user_id: user.id,  user:{avatar_crop:{x:"0", y:"0", width:"300", height: "300"}},  "commit"=>"Apply", id: user.id} }
-  let(:request) { patch :crop_avatar, crop_params  }
-  before do
-    sign_in(user)
-    request
+    it 'render index view' do
+      expect(response).to redirect_to user_path(user)
+    end
   end
-
-
-
-  it 'render index view' do
-    expect(response).to redirect_to user_path(user)
-  end
-
-end
-
 end

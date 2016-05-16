@@ -7,7 +7,6 @@ module AcceptanceMacros
     click_on 'sign_in'
   end
 
-
   def successfuly_remove_picture
     sleep(3)
 
@@ -34,7 +33,6 @@ module AcceptanceMacros
   def successfuly_attached_pictures
     attach_file 'picture[image]', Rails.root.join("spec/acceptance/test_img/test1.jpg")
     attach_file 'new_picture', Rails.root.join("spec/acceptance/test_img/test2.jpg")
-
     expect(page).to have_link '', href: '/uploads/picture/image/1/normal_test1.jpg'
     expect(page).to have_link '', href: '/uploads/picture/image/2/normal_test2.jpg'
   end

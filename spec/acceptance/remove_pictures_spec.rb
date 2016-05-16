@@ -7,7 +7,7 @@ feature 'Remove picture', %q{As authenticate user I want to be able to remove pi
   given!(:picture) do
     create(:picture,
            album: album, user: user,
-           image: File.open(Rails.root.join("public/uploads/user/avatar/common/ava.png")))
+           image: File.open(Rails.root.join("public/common/ava.png")))
   end
 
   describe 'remove pictures on user page' do
@@ -50,9 +50,6 @@ feature 'Remove picture', %q{As authenticate user I want to be able to remove pi
       before { visit user_album_path(user, album) }
       it_behaves_like "UnAuthenticate"
     end
-
-
   end
-
 end
 

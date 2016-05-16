@@ -1,7 +1,5 @@
 require_relative 'acceptance_helper'
 
-#todo before run this test-file avoid conflict between capybara and jQuery file upload
-# please comment out in assets/javascript/common.js lines from 37 to 44 including
 feature 'Add pictures', %q{As authenticate user I want to be able to add pictures} do
   given(:user) { create(:user) }
 

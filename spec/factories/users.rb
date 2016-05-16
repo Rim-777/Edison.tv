@@ -11,5 +11,4 @@ FactoryGirl.define do
     password '12345678'
     # avatar  File.open("#{Rails.root}/public/uploads/user/avatar/common/ava.png")
   end
-
 end

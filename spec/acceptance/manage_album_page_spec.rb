@@ -23,6 +23,4 @@ feature 'Go user page', %q{As authenticate user I want to be able to manage my a
     expect(current_path).to eq root_path
 
   end
-
-
 end

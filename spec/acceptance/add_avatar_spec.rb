@@ -10,7 +10,7 @@ feature 'Add Avatar', %q{As authenticate user I want to be able to add avatar to
 
 
     click_on 'avatar_link'
-    attach_file 'fileupload', Rails.root.join("public/uploads/user/avatar/common/test_copy.jpg")
+    attach_file 'fileupload', Rails.root.join("public/common/test_copy.jpg")
     click_on 'upload_avatar_button'
 
     within '#load-avatar-modal' do

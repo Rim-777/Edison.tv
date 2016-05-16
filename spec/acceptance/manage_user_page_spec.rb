@@ -59,5 +59,4 @@ feature 'Go user page', %q{As authenticate user I want to be able to manage my p
     it_behaves_like "UnAuthenticate"
   end
 
-
 end

@@ -8,7 +8,6 @@ feature 'Add album', %q{As authenticate user I want to be able to add new album 
   given!(:album) { create(:album, user: user, title: 'May favor album') }
   given!(:album) { create(:album, user: user, title: 'May favor album') }
 
-
   scenario 'authenticate user is trying to remove album from his user page', js: true do
     sign_in(user)
     visit user_path(user)

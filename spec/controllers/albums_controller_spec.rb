@@ -6,7 +6,6 @@ RSpec.describe AlbumsController, type: :controller do
   let(:album) { create(:album, user: user) }
   let(:another_user) { create(:user) }
 
-
   describe 'GET #index' do
     let!(:albums) { create_list(:album, 2, user: user) }
 
@@ -30,7 +29,6 @@ RSpec.describe AlbumsController, type: :controller do
       sign_in(user)
       get :show, id: album, user_id: user.id
     end
-
 
     it 'assigns the requested album to @album' do
       expect(assigns(:album)).to eq album

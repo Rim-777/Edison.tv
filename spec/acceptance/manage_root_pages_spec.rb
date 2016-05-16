@@ -29,6 +29,5 @@ feature 'Manage Root Page', %q{As authenticate user I want to be able to manage 
       expect(current_path).to eq user_album_path(user, album)
 
     end
-
   end
 end

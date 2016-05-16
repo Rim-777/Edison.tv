@@ -16,7 +16,5 @@ RSpec.describe Album, type: :model do
       expect(album.is_empty?).to eq false
       expect(empty_album.is_empty?).to eq true
     end
-
   end
-
 end
