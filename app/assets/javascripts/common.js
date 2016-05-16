@@ -39,7 +39,7 @@ function setFileUploader() {
             data.context = $(tmpl("template-upload", data.files[0]));
             $('.progress_modal_body').html(data.context);
             files_count++;
-            $('.count').html(files_count);
+            $('.count').html(files_count/2);
             data.submit();
         },
         progress: function (e, data) {
@@ -48,7 +48,7 @@ function setFileUploader() {
                 progress = parseInt(data.loaded / data.total * 100, 10);
                 console.log(progress);
                 data.context.find('.bar').css('width', progress + '%');
-                $('.progress_modal_body').html(data.context);
+                //$('.progress_modal_body').html(data.context);
             }
 
         }
